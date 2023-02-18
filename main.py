@@ -29,30 +29,25 @@ class Auto:
     def __init__(self, modelo, precio, asientos, marca, motor, registro):
         self.modelo = modelo
         self.precio = precio
-        self.asientos = asientos
+        self.asientos = list(asientos)
         self.marca = marca
         self.motor = motor
         self.registro = registro
 
     def cantidadAsientos(self):
         contador = 0
-        for i in self.asientos:
-            tipo = str(type(i))
-            if "Asiento" in tipo:
-                contador += 1
-        return contador
+        if self.asientos != None:
+            for i in self.asientos:
+                if i != None:
+                    contador += 1
+            return contador
     
     def verificarIntegridad(self):
-        tipo1 = str(type(self.motor))
-        if "Motor" in tipo1:
-            if self.registro != self.motor.registro:
+        if self.registro != self.motor.registro:
                 return "Las piezas no son originales"
-
-        for i in self.asientos:
-            tipo2 = str(type(i))
-            if "Asiento" not in tipo2:
-                continue
-            if i.registro != self.registro:
-                return "Las piezas no son originales"
-                break
-        return "Auto original"
+        else:
+            for i in self.asientos:
+                if type(i) == Asiento:
+                    if i.registro != self.registro:
+                        return "Las piezas no son originales"
+            return "Auto original"
