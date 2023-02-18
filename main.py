@@ -47,8 +47,7 @@ class Auto:
         if "Motor" in tipo1:
             if self.registro != self.motor.registro:
                 return "Las piezas no son originales"
-        else:
-            return "Las piezas no son originales"
+
         for i in self.asientos:
             tipo2 = str(type(i))
             if "Asiento" not in tipo2:
