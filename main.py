@@ -43,18 +43,17 @@ class Auto:
         return contador
     
     def verificarIntegridad(self):
-        tipo = str(type(self.motor))
-        if "Motor" in tipo:
+        tipo1 = str(type(self.motor))
+        if "Motor" in tipo1:
             if self.registro != self.motor.registro:
                 return "Las piezas no son originales"
         else:
             return "Las piezas no son originales"
         for i in self.asientos:
-            tipoA = str(type(i))
-            if "Asiento" not in tipoA:
+            tipo2 = str(type(i))
+            if "Asiento" not in tipo2:
                 continue
             if i.registro != self.registro:
                 return "Las piezas no son originales"
                 break
         return "Auto original"
-#Cambio 
